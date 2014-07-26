@@ -4,7 +4,7 @@
   "homepage": "https://github.com/mankyKitty/purescript-profunctor",
   "authors": [
     "joneshf",
-    "mankyKitty",
+    "mankyKitty"
   ],
   "description": "Profunctors for PureScript.",
   "keywords": [
