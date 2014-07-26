@@ -1,0 +1,25 @@
+{
+  "name": "purescript-profunctor",
+  "version": "0.0.1",
+  "description": "Profunctors for PureScript.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.8.6",
+    "gulp-purescript": "^0.0.9",
+    "run-sequence": "^0.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mankyKitty/purescript-profunctor.git"
+  },
+  "author": "Hardy Jones",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mankyKitty/purescript-profunctor/issues"
+  },
+  "homepage": "https://github.com/mankyKitty/purescript-profunctor"
+}

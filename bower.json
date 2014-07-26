@@ -1,0 +1,22 @@
+{
+  "name": "purescript-profunctor",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mankyKitty/purescript-profunctor",
+  "authors": [
+    "Hardy Jones"
+  ],
+  "description": "Profunctors for PureScript.",
+  "keywords": [
+    "purescript",
+    "profunctor",
+    "lens"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
