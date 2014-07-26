@@ -16,7 +16,7 @@
     "type": "git",
     "url": "https://github.com/mankyKitty/purescript-profunctor.git"
   },
-  "author": "Hardy Jones",
+  "author": "jonsehf,mankykitty",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mankyKitty/purescript-profunctor/issues"

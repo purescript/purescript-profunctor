@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "homepage": "https://github.com/mankyKitty/purescript-profunctor",
   "authors": [
-    "Hardy Jones"
+    "joneshf",
+    "mankyKitty",
   ],
   "description": "Profunctors for PureScript.",
   "keywords": [
