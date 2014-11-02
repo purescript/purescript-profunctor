@@ -1,23 +1,23 @@
 {
-  "name": "purescript-profunctor",
-  "version": "0.0.1",
-  "homepage": "https://github.com/mankyKitty/purescript-profunctor",
-  "authors": [
-    "joneshf",
-    "mankyKitty"
-  ],
-  "description": "Profunctors for PureScript.",
+  "name": "purescript-profunctors",
+  "homepage": "https://github.com/purescript/purescript-profunctors",
   "keywords": [
     "purescript",
-    "profunctor",
-    "lens"
+    "profunctor"
+  ],
+  "description": "Profunctor typeclass for PureScript",
+  "authors": [
+    "Hardy Jones <jones3.hardy@gmail.com>",
+    "Sean Chalmers <sclhiannan@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "output",
+    "bower.json",
+    "Gruntfile.js",
+    "package.json"
   ]
 }
