@@ -18,6 +18,3 @@
     lmap :: forall a b c p. (Profunctor p) => (a -> b) -> p b c -> p a c
 
     rmap :: forall a b c p. (Profunctor p) => (b -> c) -> p a b -> p a c
-
-
-
