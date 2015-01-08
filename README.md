@@ -25,8 +25,8 @@
 ### Type Classes
 
     class (Profunctor p) <= Choice p where
-      left' :: forall a b c. p a b -> p (Either a c) (Either b c)
-      right' :: forall a b c. p b c -> p (Either a b) (Either a c)
+      left :: forall a b c. p a b -> p (Either a c) (Either b c)
+      right :: forall a b c. p b c -> p (Either a b) (Either a c)
 
 
 ### Type Class Instances
@@ -39,8 +39,8 @@
 ### Type Classes
 
     class (Profunctor p) <= Strong p where
-      first' :: forall a b c. p a b -> p (Tuple a c) (Tuple b c)
-      second' :: forall a b c. p b c -> p (Tuple a b) (Tuple a c)
+      first :: forall a b c. p a b -> p (Tuple a c) (Tuple b c)
+      second :: forall a b c. p b c -> p (Tuple a b) (Tuple a c)
 
 
 ### Type Class Instances
