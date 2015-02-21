@@ -22,6 +22,6 @@
   ],
   "dependencies": {
     "purescript-either": "~0.1.4",
-    "purescript-tuples": "~0.2.2"
+    "purescript-tuples": "~0.3.0"
   }
 }
