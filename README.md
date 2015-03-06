@@ -50,6 +50,20 @@ instance choiceArr :: Choice Prim.Function
 ```
 
 
+#### `(+++)`
+
+``` purescript
+(+++) :: forall p a b c d. (Category p, Choice p) => p a b -> p c d -> p (Either a c) (Either b d)
+```
+
+
+#### `(|||)`
+
+``` purescript
+(|||) :: forall p a b c. (Category p, Choice p) => p a c -> p b c -> p (Either a b) c
+```
+
+
 
 ## Module Data.Profunctor.Strong
 
@@ -66,4 +80,18 @@ class (Profunctor p) <= Strong p where
 
 ``` purescript
 instance strongArr :: Strong Prim.Function
+```
+
+
+#### `(***)`
+
+``` purescript
+(***) :: forall p a b c d. (Category p, Strong p) => p a b -> p c d -> p (Tuple a c) (Tuple b d)
+```
+
+
+#### `(&&&)`
+
+``` purescript
+(&&&) :: forall p a b c. (Category p, Strong p) => p a b -> p a c -> p a (Tuple b c)
 ```
