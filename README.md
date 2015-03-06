@@ -24,6 +24,13 @@ rmap :: forall a b c p. (Profunctor p) => (b -> c) -> p a b -> p a c
 ```
 
 
+#### `arr`
+
+``` purescript
+arr :: forall a b p. (Category p, Profunctor p) => (a -> b) -> p a b
+```
+
+
 #### `profunctorArr`
 
 ``` purescript
