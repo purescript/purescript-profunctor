@@ -9,5 +9,8 @@ module Data.Profunctor where
   rmap :: forall a b c p. (Profunctor p) => (b -> c) -> p a b -> p a c
   rmap b2c = dimap id b2c
 
+  arr :: forall a b p. (Category p, Profunctor p) => (a -> b) -> p a b
+  arr f = rmap f id
+
   instance profunctorArr :: Profunctor (->) where
     dimap a2b c2d b2c = a2b >>> b2c >>> c2d
