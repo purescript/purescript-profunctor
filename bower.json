@@ -1,6 +1,6 @@
 {
-  "name": "purescript-profunctors",
-  "homepage": "https://github.com/purescript/purescript-profunctors",
+  "name": "purescript-profunctor",
+  "homepage": "https://github.com/purescript/purescript-profunctor",
   "keywords": [
     "purescript",
     "profunctor"
