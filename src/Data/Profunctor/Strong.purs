@@ -6,7 +6,7 @@ module Data.Profunctor.Strong where
   -- | The `Strong` class extends `Profunctor` with combinators for working with
   -- | product types.
   -- |
-  -- | `first` and `first` lift values in a `Profunctor` to act on the first and 
+  -- | `first` and `second` lift values in a `Profunctor` to act on the first and
   -- | second components of a `Tuple`, respectively.
   -- |
   class (Profunctor p) <= Strong p where
@@ -35,4 +35,3 @@ module Data.Profunctor.Strong where
     where
     split :: p a (Tuple a a)
     split = dimap id (\a -> Tuple a a) id
-
