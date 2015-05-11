@@ -12,4 +12,6 @@ bower install purescript-profunctor
 
 ## Module documentation
 
-[`docs/MODULE.md`](docs/MODULE.md)
+- [Data.Profunctor](docs/Data.Profunctor.md)
+- [Data.Profunctor.Choice](docs/Data.Profunctor.Choice.md)
+- [Data.Profunctor.Strong](docs/Data.Profunctor.Strong.md)
