@@ -1,5 +1,7 @@
 module Data.Profunctor.Strong where
 
+import Prelude
+
 import Data.Profunctor
 import Data.Tuple (Tuple(..))
 

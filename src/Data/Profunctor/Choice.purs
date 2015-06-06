@@ -1,5 +1,7 @@
 module Data.Profunctor.Choice where
 
+import Prelude
+
 import Data.Either (Either(..), either)
 import Data.Profunctor
 

@@ -1,5 +1,7 @@
 module Data.Profunctor where
 
+import Prelude
+
 -- | A `Profunctor` is a `Functor` from the pair category `(Type^op, Type)`
 -- | to `Type`.
 -- |
