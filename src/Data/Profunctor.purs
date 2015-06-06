@@ -33,5 +33,5 @@ rmap b2c = dimap id b2c
 arr :: forall a b p. (Category p, Profunctor p) => (a -> b) -> p a b
 arr f = rmap f id
 
-instance profunctorArr :: Profunctor (->) where
+instance profunctorFn :: Profunctor (->) where
   dimap a2b c2d b2c = a2b >>> b2c >>> c2d

@@ -8,16 +8,16 @@ class (Profunctor p) <= Strong p where
   second :: forall a b c. p b c -> p (Tuple a b) (Tuple a c)
 ```
 
-##### Instances
-``` purescript
-instance strongArr :: Strong Function
-```
-
 The `Strong` class extends `Profunctor` with combinators for working with
 product types.
 
 `first` and `second` lift values in a `Profunctor` to act on the first and
 second components of a `Tuple`, respectively.
+
+##### Instances
+``` purescript
+instance strongFn :: Strong Function
+```
 
 #### `(***)`
 

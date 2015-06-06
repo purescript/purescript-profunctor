@@ -8,16 +8,16 @@ class (Profunctor p) <= Choice p where
   right :: forall a b c. p b c -> p (Either a b) (Either a c)
 ```
 
-##### Instances
-``` purescript
-instance choiceArr :: Choice Function
-```
-
 The `Choice` class extends `Profunctor` with combinators for working with
 sum types.
 
 `left` and `right` lift values in a `Profunctor` to act on the `Left` and
 `Right` components of a sum, respectively.
+
+##### Instances
+``` purescript
+instance choiceFn :: Choice Function
+```
 
 #### `(+++)`
 

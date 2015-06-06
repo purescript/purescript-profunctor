@@ -7,11 +7,6 @@ class Profunctor p where
   dimap :: forall a b c d. (a -> b) -> (c -> d) -> p b c -> p a d
 ```
 
-##### Instances
-``` purescript
-instance profunctorArr :: Profunctor Function
-```
-
 A `Profunctor` is a `Functor` from the pair category `(Type^op, Type)`
 to `Type`.
 
@@ -28,6 +23,11 @@ Laws:
 
 - Identity: `dimap id id = id`
 - Composition: `dimap f1 g1 <<< dimap f2 g2 = dimap (f1 >>> f2) (g1 <<< g2)`
+
+##### Instances
+``` purescript
+instance profunctorFn :: Profunctor Function
+```
 
 #### `lmap`
 
