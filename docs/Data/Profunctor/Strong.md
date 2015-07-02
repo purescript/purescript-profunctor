@@ -25,6 +25,8 @@ instance strongFn :: Strong Function
 (***) :: forall p a b c d. (Category p, Strong p) => p a b -> p c d -> p (Tuple a c) (Tuple b d)
 ```
 
+_right-associative / precedence 3_
+
 Compose a value acting on a `Tuple` from two values, each acting on one of
 the components of the `Tuple`.
 
@@ -33,6 +35,8 @@ the components of the `Tuple`.
 ``` purescript
 (&&&) :: forall p a b c. (Category p, Strong p) => p a b -> p a c -> p a (Tuple b c)
 ```
+
+_right-associative / precedence 3_
 
 Compose a value which introduces a `Tuple` from two values, each introducing
 one side of the `Tuple`.
