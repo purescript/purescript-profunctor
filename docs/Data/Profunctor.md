@@ -52,5 +52,3 @@ arr :: forall a b p. (Category p, Profunctor p) => (a -> b) -> p a b
 ```
 
 Lift a pure function into any `Profunctor` which is also a `Category`.
-
-
