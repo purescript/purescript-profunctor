@@ -1,8 +1,8 @@
-module Data.Profunctor.Cochoice where
+module Data.Profunctor.Costrong where
 
 import Prelude
 
-import Data.Either (Tuple ())
+import Data.Tuple (Tuple ())
 import Data.Profunctor
 
 -- | The `Costrong` class provides the dual operations of the `Strong` class.

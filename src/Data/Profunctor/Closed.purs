@@ -8,5 +8,5 @@ import Data.Profunctor
 class (Profunctor p) <= Closed p where
   closed :: forall a b x. p a b -> p (x -> a) (x -> b)
 
-instance Closed Function where
+instance closedFunction :: Closed Function where
   closed = (<<<)
