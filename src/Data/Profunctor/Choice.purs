@@ -1,9 +1,9 @@
 module Data.Profunctor.Choice where
 
-import Prelude
+import Prelude (class Category, (>>>), id, (<$>), ($))
 
 import Data.Either (Either(..), either)
-import Data.Profunctor
+import Data.Profunctor (class Profunctor, dimap)
 
 -- | The `Choice` class extends `Profunctor` with combinators for working with
 -- | sum types.
@@ -19,21 +19,20 @@ instance choiceFn :: Choice (->) where
   left _   (Right c) = Right c
   right = (<$>)
 
-infixr 2 +++
-infixr 2 |||
-
 -- | Compose a value acting on a sum from two values, each acting on one of
 -- | the components of the sum.
-(+++) :: forall p a b c d. (Category p, Choice p) => p a b -> p c d -> p (Either a c) (Either b d)
-(+++) l r = left l >>> right r
+infixr 2 chooseLeftSum as +++
+chooseLeftSum :: forall p a b c d. (Category p, Choice p) => p a b -> p c d -> p (Either a c) (Either b d)
+chooseLeftSum l r = left l >>> right r
 
 -- | Compose a value which eliminates a sum from two values, each eliminating
 -- | one side of the sum.
 -- |
 -- | This combinator is useful when assembling values from smaller components,
 -- | because it provides a way to support two different types of input.
-(|||) :: forall p a b c. (Category p, Choice p) => p a c -> p b c -> p (Either a b) c
-(|||) l r = (l +++ r) >>> join
+infixr 2 keepOne as |||
+keepOne :: forall p a b c. (Category p, Choice p) => p a c -> p b c -> p (Either a b) c
+keepOne l r = (l +++ r) >>> join
   where
   join :: p (Either c c) c
   join = dimap (either id id) id id

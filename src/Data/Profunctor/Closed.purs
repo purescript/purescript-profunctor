@@ -1,8 +1,8 @@
 module Data.Profunctor.Closed where
 
-import Prelude
+import Prelude ((<<<))
 
-import Data.Profunctor
+import Data.Profunctor (class Profunctor)
 
 -- | The `Closed` class extends the `Profunctor` class to work with functions.
 class (Profunctor p) <= Closed p where

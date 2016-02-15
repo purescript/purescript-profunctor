@@ -1,8 +1,8 @@
 module Data.Profunctor.Strong where
 
-import Prelude
+import Prelude (class Category, (>>>), id, (<$>))
 
-import Data.Profunctor
+import Data.Profunctor (class Profunctor, dimap)
 import Data.Tuple (Tuple(..))
 
 -- | The `Strong` class extends `Profunctor` with combinators for working with
@@ -18,21 +18,20 @@ instance strongFn :: Strong (->) where
   first a2b (Tuple a c) = Tuple (a2b a) c
   second = (<$>)
 
-infixr 3 ***
-infixr 3 &&&
-
 -- | Compose a value acting on a `Tuple` from two values, each acting on one of
 -- | the components of the `Tuple`.
-(***) :: forall p a b c d. (Category p, Strong p) => p a b -> p c d -> p (Tuple a c) (Tuple b d)
-(***) l r = first l >>> second r
+infixr 3 nestTuple as ***
+nestTuple :: forall p a b c d. (Category p, Strong p) => p a b -> p c d -> p (Tuple a c) (Tuple b d)
+nestTuple l r = first l >>> second r
 
 -- | Compose a value which introduces a `Tuple` from two values, each introducing
 -- | one side of the `Tuple`.
 -- |
 -- | This combinator is useful when assembling values from smaller components,
 -- | because it provides a way to support two different types of output.
-(&&&) :: forall p a b c. (Category p, Strong p) => p a b -> p a c -> p a (Tuple b c)
-(&&&) l r = split >>> (l *** r)
+infixr 3 fanIn as &&&
+fanIn :: forall p a b c. (Category p, Strong p) => p a b -> p a c -> p a (Tuple b c)
+fanIn l r = split >>> (l *** r)
   where
   split :: p a (Tuple a a)
   split = dimap id (\a -> Tuple a a) id

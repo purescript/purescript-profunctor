@@ -1,12 +1,12 @@
 module Data.Profunctor.Star where
 
-import Prelude
+import Prelude (class Applicative, class Functor, map, (<<<), pure, ($), (>>>))
 
-import Data.Tuple
-import Data.Either
-import Data.Profunctor
-import Data.Profunctor.Strong
-import Data.Profunctor.Choice
+import Data.Tuple (Tuple(Tuple))
+import Data.Either (Either(Right, Left), either)
+import Data.Profunctor (class Profunctor)
+import Data.Profunctor.Strong (class Strong)
+import Data.Profunctor.Choice (class Choice)
 
 -- | `Star` turns a `Functor` into a `Profunctor`.
 newtype Star f a b = Star (a -> f b)
