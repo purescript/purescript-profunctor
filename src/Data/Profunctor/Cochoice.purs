@@ -1,9 +1,7 @@
 module Data.Profunctor.Cochoice where
 
-import Prelude
-
 import Data.Either (Either ())
-import Data.Profunctor
+import Data.Profunctor (class Profunctor)
 
 -- | The `Cochoice` class provides the dual operations of the `Choice` class.
 class (Profunctor p) <= Cochoice p where

@@ -1,9 +1,7 @@
 module Data.Profunctor.Costrong where
 
-import Prelude
-
 import Data.Tuple (Tuple ())
-import Data.Profunctor
+import Data.Profunctor (class Profunctor)
 
 -- | The `Costrong` class provides the dual operations of the `Strong` class.
 class (Profunctor p) <= Costrong p where
