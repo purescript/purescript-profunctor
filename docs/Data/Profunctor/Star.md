@@ -23,5 +23,3 @@ runStar :: forall f a b. Star f a b -> a -> f b
 ```
 
 Unwrap a value of type `Star f a b`.
-
-
