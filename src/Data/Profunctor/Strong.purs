@@ -2,7 +2,7 @@ module Data.Profunctor.Strong where
 
 import Prelude
 
-import Data.Profunctor
+import Data.Profunctor (class Profunctor, dimap)
 import Data.Tuple (Tuple(..))
 
 -- | The `Strong` class extends `Profunctor` with combinators for working with
@@ -25,16 +25,13 @@ import Data.Tuple (Tuple(..))
 -- | ```
 -- | So, when the `profunctor` is `Function` application, `first` essentially applies your function
 -- | to the first element of a `Tuple`, and `second` applies it to the second element (same as `map` would do).
-class (Profunctor p) <= Strong p where
+class Profunctor p <= Strong p where
   first :: forall a b c. p a b -> p (Tuple a c) (Tuple b c)
   second :: forall a b c. p b c -> p (Tuple a b) (Tuple a c)
 
 instance strongFn :: Strong (->) where
   first a2b (Tuple a c) = Tuple (a2b a) c
   second = (<$>)
-
-infixr 3 ***
-infixr 3 &&&
 
 -- | Compose a value acting on a `Tuple` from two values, each acting on one of
 -- | the components of the `Tuple`.
@@ -46,8 +43,10 @@ infixr 3 &&&
 -- | We take two functions, `f` and `g`, and we transform them into a single function which
 -- | takes a `Tuple` and maps `f` over the first element and `g` over the second.  Just like `bi-map`
 -- | would do for the `bi-functor` instance of `Tuple`.
-(***) :: forall p a b c d. (Category p, Strong p) => p a b -> p c d -> p (Tuple a c) (Tuple b d)
-(***) l r = first l >>> second r
+splitStrong :: forall p a b c d. (Category p, Strong p) => p a b -> p c d -> p (Tuple a c) (Tuple b d)
+splitStrong l r = first l >>> second r
+
+infixr 3 splitStrong as ***
 
 -- | Compose a value which introduces a `Tuple` from two values, each introducing
 -- | one side of the `Tuple`.
@@ -63,8 +62,10 @@ infixr 3 &&&
 -- | single function which takes one parameter and returns a `Tuple` of the results of running
 -- | `f` and `g` on the parameter, respectively.  This allows us to run two parallel computations
 -- | on the same input and return both results in a `Tuple`.
-(&&&) :: forall p a b c. (Category p, Strong p) => p a b -> p a c -> p a (Tuple b c)
-(&&&) l r = split >>> (l *** r)
+fanout :: forall p a b c. (Category p, Strong p) => p a b -> p a c -> p a (Tuple b c)
+fanout l r = split >>> (l *** r)
   where
   split :: p a (Tuple a a)
   split = dimap id (\a -> Tuple a a) id
+
+infixr 3 fanout as &&&

@@ -1,10 +1,6 @@
 {
   "name": "purescript-profunctor",
   "homepage": "https://github.com/purescript/purescript-profunctor",
-  "keywords": [
-    "purescript",
-    "profunctor"
-  ],
   "description": "Profunctor typeclass for PureScript",
   "authors": [
     "Hardy Jones <jones3.hardy@gmail.com>",
@@ -26,7 +22,7 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-either": "^0.2.0",
-    "purescript-tuples": "^0.4.0"
+    "purescript-either": "^1.0.0-rc.1",
+    "purescript-tuples": "^1.0.0-rc.1"
   }
 }
