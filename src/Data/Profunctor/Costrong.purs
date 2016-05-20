@@ -1,7 +1,5 @@
 module Data.Profunctor.Costrong where
 
-import Prelude
-
 import Data.Tuple (Tuple)
 import Data.Profunctor (class Profunctor)
 

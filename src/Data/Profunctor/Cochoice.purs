@@ -1,7 +1,5 @@
 module Data.Profunctor.Cochoice where
 
-import Prelude
-
 import Data.Either (Either)
 import Data.Profunctor (class Profunctor)
 
