@@ -2,6 +2,9 @@ module Data.Profunctor.Costar where
 
 import Prelude
 
+import Control.Comonad (class Comonad, extract)
+import Control.Extend (class Extend, (=<=))
+
 import Data.Distributive (class Distributive, distribute)
 import Data.Either (Either(..), either)
 import Data.Functor.Invariant (class Invariant, imapF)
@@ -9,14 +12,23 @@ import Data.Profunctor (class Profunctor)
 import Data.Profunctor.Closed (class Closed)
 import Data.Profunctor.Cochoice (class Cochoice)
 import Data.Profunctor.Costrong (class Costrong)
+import Data.Profunctor.Strong (class Strong)
 import Data.Tuple (Tuple(..), fst, snd)
 
 -- | `Costar` turns a `Functor` into a `Profunctor` "backwards".
+-- |
+-- | `Costar f` is also the co-Kleisli category for `f`.
 newtype Costar f b a = Costar (f b -> a)
 
 -- | Unwrap a value of type `Costar f a b`.
 unCostar :: forall f a b. Costar f b a -> f b -> a
 unCostar (Costar f) = f
+
+instance semigroupoidCostar :: Extend f => Semigroupoid (Costar f) where
+  compose (Costar f) (Costar g) = Costar (f =<= g)
+
+instance categoryCostar :: Comonad f => Category (Costar f) where
+  id = Costar extract
 
 instance functorCostar :: Functor (Costar f a) where
   map f (Costar g) = Costar (f <<< g)
@@ -41,6 +53,10 @@ instance distributiveCostar :: Distributive f => Distributive (Costar f a) where
 
 instance profunctorCostar :: Functor f => Profunctor (Costar f) where
   dimap f g (Costar h) = Costar (map f >>> h >>> g)
+
+instance strongCostar :: Comonad f => Strong (Costar f) where
+  first (Costar f) = Costar \x -> Tuple (f (map fst x)) (snd (extract x))
+  second (Costar f) = Costar \x -> Tuple (fst (extract x)) (f (map snd x))
 
 instance costrongCostar :: Functor f => Costrong (Costar f) where
   unfirst (Costar f) = Costar \fb ->

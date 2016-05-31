@@ -18,11 +18,19 @@ import Data.Profunctor.Strong (class Strong)
 import Data.Tuple (Tuple(..))
 
 -- | `Star` turns a `Functor` into a `Profunctor`.
+-- |
+-- | `Star f` is also the Kleisli category for `f`
 newtype Star f a b = Star (a -> f b)
 
 -- | Unwrap a value of type `Star f a b`.
 unStar :: forall f a b. Star f a b -> a -> f b
 unStar (Star f) = f
+
+instance semigroupoidStar :: Bind f => Semigroupoid (Star f) where
+  compose (Star f) (Star g) = Star \x -> g x >>= f
+
+instance categoryStar :: Monad f => Category (Star f) where
+  id = Star pure
 
 instance functorStar :: Functor f => Functor (Star f a) where
   map f (Star g) = Star (map f <<< g)
