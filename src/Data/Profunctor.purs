@@ -1,6 +1,7 @@
 module Data.Profunctor where
 
 import Prelude
+import Data.Newtype (class Newtype, wrap, unwrap)
 
 -- | A `Profunctor` is a `Functor` from the pair category `(Type^op, Type)`
 -- | to `Type`.
@@ -32,6 +33,12 @@ rmap b2c = dimap id b2c
 -- | Lift a pure function into any `Profunctor` which is also a `Category`.
 arr :: forall a b p. (Category p, Profunctor p) => (a -> b) -> p a b
 arr f = rmap f id
+
+unwrapIso :: forall p t a. (Profunctor p, Newtype t a) => p t t -> p a a
+unwrapIso = dimap wrap unwrap
+
+wrapIso :: forall p t a. (Profunctor p, Newtype t a) => (t -> a) -> p a a -> p t t
+wrapIso _ = dimap unwrap wrap
 
 instance profunctorFn :: Profunctor (->) where
   dimap a2b c2d b2c = a2b >>> b2c >>> c2d

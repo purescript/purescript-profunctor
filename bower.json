@@ -22,8 +22,8 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-distributive": "^1.0.0",
-    "purescript-either": "^1.0.0",
-    "purescript-tuples": "^1.0.0"
+    "purescript-distributive": "^2.0.0",
+    "purescript-either": "^2.0.0",
+    "purescript-tuples": "^3.0.0"
   }
 }
