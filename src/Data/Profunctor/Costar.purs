@@ -46,7 +46,7 @@ instance bindCostar :: Bind (Costar f a) where
 
 instance monadCostar :: Monad (Costar f a)
 
-instance distributiveCostar :: Distributive f => Distributive (Costar f a) where
+instance distributiveCostar :: Distributive (Costar f a) where
   distribute f = Costar \a -> map (\(Costar g) -> g a) f
   collect f = distribute <<< map f
 
