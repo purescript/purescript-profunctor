@@ -8,6 +8,7 @@ import Control.Extend (class Extend, (=<=))
 import Data.Distributive (class Distributive, distribute)
 import Data.Either (Either(..), either)
 import Data.Functor.Invariant (class Invariant, imapF)
+import Data.Newtype (class Newtype)
 import Data.Profunctor (class Profunctor)
 import Data.Profunctor.Closed (class Closed)
 import Data.Profunctor.Cochoice (class Cochoice)
@@ -20,9 +21,7 @@ import Data.Tuple (Tuple(..), fst, snd)
 -- | `Costar f` is also the co-Kleisli category for `f`.
 newtype Costar f b a = Costar (f b -> a)
 
--- | Unwrap a value of type `Costar f a b`.
-unCostar :: forall f a b. Costar f b a -> f b -> a
-unCostar (Costar f) = f
+derive instance newtypeCostar :: Newtype (Costar f a b) _
 
 instance semigroupoidCostar :: Extend f => Semigroupoid (Costar f) where
   compose (Costar f) (Costar g) = Costar (f =<= g)
@@ -43,12 +42,12 @@ instance applicativeCostar :: Applicative (Costar f a) where
   pure a = Costar \_ -> a
 
 instance bindCostar :: Bind (Costar f a) where
-  bind (Costar m) f = Costar \x -> unCostar (f (m x)) x
+  bind (Costar m) f = Costar \x -> case f (m x) of Costar g -> g x
 
 instance monadCostar :: Monad (Costar f a)
 
 instance distributiveCostar :: Distributive f => Distributive (Costar f a) where
-  distribute f = Costar \g -> map ((_ $ g) <<< unCostar) f
+  distribute f = Costar \a -> map (\(Costar g) -> g a) f
   collect f = distribute <<< map f
 
 instance profunctorCostar :: Functor f => Profunctor (Costar f) where
