@@ -43,7 +43,13 @@ instance strongFn :: Strong (->) where
 -- | We take two functions, `f` and `g`, and we transform them into a single function which
 -- | takes a `Tuple` and maps `f` over the first element and `g` over the second.  Just like `bi-map`
 -- | would do for the `bi-functor` instance of `Tuple`.
-splitStrong :: forall p a b c d. (Category p, Strong p) => p a b -> p c d -> p (Tuple a c) (Tuple b d)
+splitStrong
+  :: forall p a b c d
+   . Category p
+  => Strong p
+  => p a b
+  -> p c d
+  -> p (Tuple a c) (Tuple b d)
 splitStrong l r = first l >>> second r
 
 infixr 3 splitStrong as ***
@@ -62,7 +68,13 @@ infixr 3 splitStrong as ***
 -- | single function which takes one parameter and returns a `Tuple` of the results of running
 -- | `f` and `g` on the parameter, respectively.  This allows us to run two parallel computations
 -- | on the same input and return both results in a `Tuple`.
-fanout :: forall p a b c. (Category p, Strong p) => p a b -> p a c -> p a (Tuple b c)
+fanout
+  :: forall p a b c
+   . Category p
+  => Strong p
+  => p a b
+  -> p a c
+  -> p a (Tuple b c)
 fanout l r = split >>> (l *** r)
   where
   split :: p a (Tuple a a)
