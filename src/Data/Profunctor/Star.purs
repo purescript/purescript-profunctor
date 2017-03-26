@@ -15,6 +15,7 @@ import Data.Newtype (class Newtype)
 import Data.Profunctor (class Profunctor)
 import Data.Profunctor.Choice (class Choice)
 import Data.Profunctor.Closed (class Closed)
+import Data.Profunctor.Open (class Open)
 import Data.Profunctor.Strong (class Strong)
 import Data.Tuple (Tuple(..))
 
@@ -77,3 +78,7 @@ instance choiceStar :: Applicative f => Choice (Star f) where
 
 instance closedStar :: Distributive f => Closed (Star f) where
   closed (Star f) = Star \g -> distribute (f <<< g)
+
+instance openStar :: Distributive f => Open (Star f) where
+  open (Star f) = Star \g -> (g <<< _) <$> distribute f
+
