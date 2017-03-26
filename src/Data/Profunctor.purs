@@ -31,13 +31,13 @@ rmap :: forall a b c p. Profunctor p => (b -> c) -> p a b -> p a c
 rmap b2c = dimap id b2c
 
 -- | Lift a pure function into any `Profunctor` which is also a `Category`.
-arr :: forall a b p. (Category p, Profunctor p) => (a -> b) -> p a b
+arr :: forall a b p. Category p => Profunctor p => (a -> b) -> p a b
 arr f = rmap f id
 
-unwrapIso :: forall p t a. (Profunctor p, Newtype t a) => p t t -> p a a
+unwrapIso :: forall p t a. Profunctor p => Newtype t a => p t t -> p a a
 unwrapIso = dimap wrap unwrap
 
-wrapIso :: forall p t a. (Profunctor p, Newtype t a) => (t -> a) -> p a a -> p t t
+wrapIso :: forall p t a. Profunctor p => Newtype t a => (t -> a) -> p a a -> p t t
 wrapIso _ = dimap unwrap wrap
 
 instance profunctorFn :: Profunctor (->) where
