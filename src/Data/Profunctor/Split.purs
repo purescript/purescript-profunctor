@@ -1,4 +1,11 @@
-module Data.Profunctor.Split where
+module Data.Profunctor.Split
+  ( Split
+  , split
+  , unSplit
+  , liftSplit
+  , lowerSplit
+  , hoistSplit
+  ) where
 
 import Prelude
 
