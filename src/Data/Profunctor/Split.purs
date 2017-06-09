@@ -17,6 +17,9 @@ newtype Split f a b = Split (Exists (SplitF f a b))
 
 data SplitF f a b x = SplitF (a -> x) (x -> b) (f x)
 
+instance functorSplit :: Functor (Split f a) where
+  map f = unSplit \g h fx -> split g (f <<< h) fx
+
 instance profunctorSplit :: Profunctor (Split f) where
   dimap f g = unSplit \h i -> split (h <<< f) (g <<< i)
 
