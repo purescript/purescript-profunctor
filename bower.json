@@ -22,6 +22,7 @@
     "package.json"
   ],
   "dependencies": {
+    "purescript-contravariant": "^3.0.0",
     "purescript-distributive": "^3.0.0",
     "purescript-either": "^3.0.0",
     "purescript-tuples": "^4.0.0"
