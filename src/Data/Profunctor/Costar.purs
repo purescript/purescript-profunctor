@@ -9,7 +9,7 @@ import Data.Distributive (class Distributive, distribute)
 import Data.Either (Either(..), either)
 import Data.Functor.Invariant (class Invariant, imapF)
 import Data.Newtype (class Newtype)
-import Data.Profunctor (class Profunctor)
+import Data.Profunctor (class Profunctor, lmap)
 import Data.Profunctor.Closed (class Closed)
 import Data.Profunctor.Cochoice (class Cochoice)
 import Data.Profunctor.Costrong (class Costrong)
@@ -73,3 +73,6 @@ instance cochoiceCostar :: Applicative f => Cochoice (Costar f) where
 
 instance closedCostar :: Functor f => Closed (Costar f) where
   closed (Costar f) = Costar \g x -> f (map (_ $ x) g)
+
+hoistCostar :: forall f g a b. (g ~> f) -> Costar f a b -> Costar g a b
+hoistCostar f (Costar g) = Costar (lmap f g)

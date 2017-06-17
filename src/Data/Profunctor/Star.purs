@@ -77,3 +77,6 @@ instance choiceStar :: Applicative f => Choice (Star f) where
 
 instance closedStar :: Distributive f => Closed (Star f) where
   closed (Star f) = Star \g -> distribute (f <<< g)
+
+hoistStar :: forall f g a b. (f ~> g) -> Star f a b -> Star g a b
+hoistStar f (Star g) = Star (f <<< g)
