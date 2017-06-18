@@ -20,3 +20,6 @@ instance functorJoker :: Functor f => Functor (Joker f a) where
 
 instance profunctorJoker :: Functor f => Profunctor (Joker f) where
   dimap f g (Joker a) = Joker (map g a)
+
+hoistJoker :: forall f g a b. (f ~> g) -> Joker f a b -> Joker g a b
+hoistJoker f (Joker a) = Joker (f a)

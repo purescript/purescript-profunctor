@@ -21,3 +21,6 @@ instance functorClown :: Functor (Clown f a) where
 
 instance profunctorClown :: Contravariant f => Profunctor (Clown f) where
   dimap f g (Clown a) = Clown (cmap f a)
+
+hoistClown :: forall f g a b. (f ~> g) -> Clown f a b -> Clown g a b
+hoistClown f (Clown a) = Clown (f a)
