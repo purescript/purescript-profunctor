@@ -62,7 +62,7 @@ infixr 3 splitStrong as ***
 -- |
 -- | Specializing `(&&&)` to function application would look like this:
 -- | ```
--- | (&&&) :: forall a b c d. (a -> b) -> (a -> c) -> (a -> (Tuple b c))
+-- | (&&&) :: forall a b c. (a -> b) -> (a -> c) -> (a -> (Tuple b c))
 -- | ```
 -- | We take two functions, `f` and `g`, with the same parameter type and we transform them into a
 -- | single function which takes one parameter and returns a `Tuple` of the results of running
