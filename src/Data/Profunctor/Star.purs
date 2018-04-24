@@ -29,7 +29,7 @@ instance semigroupoidStar :: Bind f => Semigroupoid (Star f) where
   compose (Star f) (Star g) = Star \x -> g x >>= f
 
 instance categoryStar :: Monad f => Category (Star f) where
-  id = Star pure
+  identity = Star pure
 
 instance functorStar :: Functor f => Functor (Star f a) where
   map f (Star g) = Star (map f <<< g)

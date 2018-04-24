@@ -5,7 +5,6 @@ import Prelude
 import Data.Functor.Invariant (class Invariant)
 import Data.Newtype (class Newtype)
 import Data.Profunctor (class Profunctor, dimap)
-import Data.Monoid (class Monoid)
 
 -- | Turns a `Profunctor` into a `Invariant` functor by equating the two type
 -- | arguments.
@@ -22,7 +21,7 @@ instance semigroupJoin :: Semigroupoid p => Semigroup (Join p a) where
   append (Join a) (Join b) = Join (a <<< b)
 
 instance monoidJoin :: Category p => Monoid (Join p a) where
-  mempty = Join id
+  mempty = Join identity
 
 instance invariantJoin :: Profunctor p => Invariant (Join p) where
   imap f g (Join a) = Join (dimap g f a)

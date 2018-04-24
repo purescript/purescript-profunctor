@@ -27,7 +27,7 @@ instance semigroupoidCostar :: Extend f => Semigroupoid (Costar f) where
   compose (Costar f) (Costar g) = Costar (f =<= g)
 
 instance categoryCostar :: Comonad f => Category (Costar f) where
-  id = Costar extract
+  identity = Costar extract
 
 instance functorCostar :: Functor (Costar f a) where
   map f (Costar g) = Costar (f <<< g)
@@ -65,10 +65,10 @@ instance costrongCostar :: Functor f => Costrong (Costar f) where
 
 instance cochoiceCostar :: Applicative f => Cochoice (Costar f) where
   unleft (Costar f) =
-    let g = either id (\r -> g (pure (Right r))) <<< f
+    let g = either identity (\r -> g (pure (Right r))) <<< f
     in Costar (g <<< map Left)
   unright (Costar f) =
-    let g = either (\l -> g (pure (Left l))) id <<< f
+    let g = either (\l -> g (pure (Left l))) identity <<< f
     in Costar (g <<< map Right)
 
 instance closedCostar :: Functor f => Closed (Costar f) where

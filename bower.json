@@ -1,7 +1,7 @@
 {
   "name": "purescript-profunctor",
   "homepage": "https://github.com/purescript/purescript-profunctor",
-  "description": "Profunctor typeclass for PureScript",
+  "description": "Profunctor type class for PureScript",
   "authors": [
     "Hardy Jones <jones3.hardy@gmail.com>",
     "Sean Chalmers <sclhiannan@gmail.com>",
@@ -22,10 +22,10 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-contravariant": "^3.0.0",
-    "purescript-distributive": "^3.0.0",
-    "purescript-either": "^3.0.0",
-    "purescript-exists": "^3.0.0",
-    "purescript-tuples": "^4.0.0"
+    "purescript-contravariant": "#compiler/0.12",
+    "purescript-distributive": "#compiler/0.12",
+    "purescript-either": "#compiler/0.12",
+    "purescript-exists": "#compiler/0.12",
+    "purescript-tuples": "#compiler/0.12"
   }
 }

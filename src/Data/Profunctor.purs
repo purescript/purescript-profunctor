@@ -17,22 +17,22 @@ import Data.Newtype (class Newtype, wrap, unwrap)
 -- |
 -- | Laws:
 -- |
--- | - Identity: `dimap id id = id`
+-- | - Identity: `dimap identity identity = identity`
 -- | - Composition: `dimap f1 g1 <<< dimap f2 g2 = dimap (f1 >>> f2) (g1 <<< g2)`
 class Profunctor p where
   dimap :: forall a b c d. (a -> b) -> (c -> d) -> p b c -> p a d
 
 -- | Map a function over the (contravariant) first type argument only.
 lmap :: forall a b c p. Profunctor p => (a -> b) -> p b c -> p a c
-lmap a2b = dimap a2b id
+lmap a2b = dimap a2b identity
 
 -- | Map a function over the (covariant) second type argument only.
 rmap :: forall a b c p. Profunctor p => (b -> c) -> p a b -> p a c
-rmap b2c = dimap id b2c
+rmap b2c = dimap identity b2c
 
 -- | Lift a pure function into any `Profunctor` which is also a `Category`.
 arr :: forall a b p. Category p => Profunctor p => (a -> b) -> p a b
-arr f = rmap f id
+arr f = rmap f identity
 
 unwrapIso :: forall p t a. Profunctor p => Newtype t a => p t t -> p a a
 unwrapIso = dimap wrap unwrap

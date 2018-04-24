@@ -30,7 +30,7 @@ unSplit :: forall f a b r. (forall x. (a -> x) -> (x -> b) -> f x -> r) -> Split
 unSplit f (Split e) = runExists (\(SplitF g h fx) -> f g h fx) e
 
 liftSplit :: forall f a. f a -> Split f a a
-liftSplit = split id id
+liftSplit = split identity identity
 
 lowerSplit :: forall f a. Invariant f => Split f a a -> f a
 lowerSplit = unSplit (flip imap)

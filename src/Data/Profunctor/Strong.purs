@@ -78,6 +78,6 @@ fanout
 fanout l r = split >>> (l *** r)
   where
   split :: p a (Tuple a a)
-  split = dimap id (\a -> Tuple a a) id
+  split = dimap identity (\a -> Tuple a a) identity
 
 infixr 3 fanout as &&&
