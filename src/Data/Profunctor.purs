@@ -37,7 +37,7 @@ arr f = rmap f identity
 unwrapIso :: forall p t a. Profunctor p => Newtype t a => p t t -> p a a
 unwrapIso = dimap wrap unwrap
 
-wrapIso :: forall p t a. Profunctor p => Newtype t a => (t -> a) -> p a a -> p t t
+wrapIso :: forall p t a. Profunctor p => Newtype t a => (a -> t) -> p a a -> p t t
 wrapIso _ = dimap unwrap wrap
 
 instance profunctorFn :: Profunctor (->) where
