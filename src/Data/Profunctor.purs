@@ -23,8 +23,8 @@ class Profunctor p where
   dimap :: forall a b c d. (a -> b) -> (c -> d) -> p b c -> p a d
 
 -- | Map a function over the (contravariant) first type argument only.
-lmap :: forall a b c p. Profunctor p => (a -> b) -> p b c -> p a c
-lmap a2b = dimap a2b identity
+lcmap :: forall a b c p. Profunctor p => (a -> b) -> p b c -> p a c
+lcmap a2b = dimap a2b identity
 
 -- | Map a function over the (covariant) second type argument only.
 rmap :: forall a b c p. Profunctor p => (b -> c) -> p a b -> p a c
