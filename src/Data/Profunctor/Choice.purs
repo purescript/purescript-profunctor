@@ -81,6 +81,6 @@ fanin
 fanin l r = (l +++ r) >>> join
   where
   join :: p (Either c c) c
-  join = dimap (either id id) id id
+  join = dimap (either identity identity) identity identity
 
 infixr 2 fanin as |||

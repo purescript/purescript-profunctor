@@ -4,7 +4,7 @@ import Prelude
 
 import Data.Newtype (class Newtype)
 import Data.Functor.Contravariant (class Contravariant)
-import Data.Profunctor (class Profunctor, lmap)
+import Data.Profunctor (class Profunctor, lcmap)
 
 -- | Provides a `Contravariant` over the first argument of a `Profunctor`.
 newtype Cowrap p b a = Cowrap (p a b)
@@ -17,4 +17,4 @@ instance showCowrap :: Show (p a b) => Show (Cowrap p b a) where
   show (Cowrap x) = "(Cowrap " <> show x <> ")"
 
 instance contravariantCowrap :: Profunctor p => Contravariant (Cowrap p b) where
-  cmap f (Cowrap a) = Cowrap (lmap f a)
+  cmap f (Cowrap a) = Cowrap (lcmap f a)

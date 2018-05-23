@@ -1,13 +1,12 @@
 {
   "name": "purescript-profunctor",
   "homepage": "https://github.com/purescript/purescript-profunctor",
-  "description": "Profunctor typeclass for PureScript",
   "authors": [
     "Hardy Jones <jones3.hardy@gmail.com>",
     "Sean Chalmers <sclhiannan@gmail.com>",
     "Phil Freeman <paf31@cantab.net>"
   ],
-  "license": "MIT",
+  "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
     "url": "git://github.com/purescript/purescript-profunctor.git"
@@ -22,10 +21,14 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-contravariant": "^3.0.0",
-    "purescript-distributive": "^3.0.0",
-    "purescript-either": "^3.0.0",
-    "purescript-exists": "^3.0.0",
-    "purescript-tuples": "^4.0.0"
+    "purescript-contravariant": "^4.0.0",
+    "purescript-control": "^4.0.0",
+    "purescript-distributive": "^4.0.0",
+    "purescript-either": "^4.0.0",
+    "purescript-exists": "^4.0.0",
+    "purescript-invariant": "^4.0.0",
+    "purescript-newtype": "^3.0.0",
+    "purescript-prelude": "^4.0.0",
+    "purescript-tuples": "^5.0.0"
   }
 }

@@ -9,7 +9,7 @@ import Data.Distributive (class Distributive, distribute)
 import Data.Either (Either(..), either)
 import Data.Functor.Invariant (class Invariant, imapF)
 import Data.Newtype (class Newtype)
-import Data.Profunctor (class Profunctor, lmap)
+import Data.Profunctor (class Profunctor, lcmap)
 import Data.Profunctor.Closed (class Closed)
 import Data.Profunctor.Cochoice (class Cochoice)
 import Data.Profunctor.Costrong (class Costrong)
@@ -27,7 +27,7 @@ instance semigroupoidCostar :: Extend f => Semigroupoid (Costar f) where
   compose (Costar f) (Costar g) = Costar (f =<= g)
 
 instance categoryCostar :: Comonad f => Category (Costar f) where
-  id = Costar extract
+  identity = Costar extract
 
 instance functorCostar :: Functor (Costar f a) where
   map f (Costar g) = Costar (f <<< g)
@@ -65,14 +65,14 @@ instance costrongCostar :: Functor f => Costrong (Costar f) where
 
 instance cochoiceCostar :: Applicative f => Cochoice (Costar f) where
   unleft (Costar f) =
-    let g = either id (\r -> g (pure (Right r))) <<< f
+    let g = either identity (\r -> g (pure (Right r))) <<< f
     in Costar (g <<< map Left)
   unright (Costar f) =
-    let g = either (\l -> g (pure (Left l))) id <<< f
+    let g = either (\l -> g (pure (Left l))) identity <<< f
     in Costar (g <<< map Right)
 
 instance closedCostar :: Functor f => Closed (Costar f) where
   closed (Costar f) = Costar \g x -> f (map (_ $ x) g)
 
 hoistCostar :: forall f g a b. (g ~> f) -> Costar f a b -> Costar g a b
-hoistCostar f (Costar g) = Costar (lmap f g)
+hoistCostar f (Costar g) = Costar (lcmap f g)
