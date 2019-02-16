@@ -29,6 +29,7 @@
     "purescript-invariant": "^4.0.0",
     "purescript-newtype": "^3.0.0",
     "purescript-prelude": "^4.0.0",
-    "purescript-tuples": "^5.0.0"
+    "purescript-tuples": "^5.0.0",
+    "purescript-functors": "^3.1.1"
   }
 }
