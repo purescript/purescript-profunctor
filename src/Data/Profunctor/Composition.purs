@@ -71,8 +71,8 @@ assoc
         (Procompose (Procompose p q) r a b) 
         (Procompose (Procompose x y) z a b)
 assoc = dimap f g where
-  f = runExists (\(ProcomposeF f gh) -> runExists (\(ProcomposeF g h) -> procompose (procompose f g) h) (unwrap gh)) <<< unwrap
-  g = map (runExists (\(ProcomposeF fg h) -> runExists (\(ProcomposeF f g) -> procompose f (procompose g h)) (unwrap fg)) <<< unwrap)
+  f = runExists (\(ProcomposeF f' gh) -> runExists (\(ProcomposeF g' h') -> procompose (procompose f' g') h') (unwrap gh)) <<< unwrap
+  g = map (runExists (\(ProcomposeF fg h) -> runExists (\(ProcomposeF f' g') -> procompose f' (procompose g' h)) (unwrap fg)) <<< unwrap)
 
 stars 
   :: forall f g d c f' g' d' c'
