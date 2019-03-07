@@ -28,7 +28,7 @@ derive instance newtypeStar :: Newtype (Star f a b) _
 instance semigroupoidStar :: Bind f => Semigroupoid (Star f) where
   compose (Star f) (Star g) = Star \x -> g x >>= f
 
-instance categoryStar :: Monad f => Category (Star f) where
+instance categoryStar :: Applicative f => Category (Star f) where
   identity = Star pure
 
 instance functorStar :: Functor f => Functor (Star f a) where
