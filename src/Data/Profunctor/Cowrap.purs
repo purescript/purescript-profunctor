@@ -7,6 +7,7 @@ import Data.Functor.Contravariant (class Contravariant)
 import Data.Profunctor (class Profunctor, lcmap)
 
 -- | Provides a `Contravariant` over the first argument of a `Profunctor`.
+newtype Cowrap :: forall k1 k2. (k1 -> k2 -> Type) -> k2 -> k1 -> Type
 newtype Cowrap p b a = Cowrap (p a b)
 
 derive instance newtypeCowrap :: Newtype (Cowrap p b a) _

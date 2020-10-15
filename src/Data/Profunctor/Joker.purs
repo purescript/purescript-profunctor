@@ -8,6 +8,7 @@ import Data.Profunctor (class Profunctor)
 import Data.Profunctor.Choice (class Choice)
 
 -- | Makes a trivial `Profunctor` for a covariant `Functor`.
+newtype Joker :: forall k1 k2. (k1 -> Type) -> k2 -> k1 -> Type
 newtype Joker f a b = Joker (f b)
 
 derive instance newtypeJoker :: Newtype (Joker f a b) _

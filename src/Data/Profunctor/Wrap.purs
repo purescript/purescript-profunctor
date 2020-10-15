@@ -6,6 +6,7 @@ import Data.Newtype (class Newtype)
 import Data.Profunctor (class Profunctor, rmap)
 
 -- | Provides a `Functor` over the second argument of a `Profunctor`.
+newtype Wrap :: forall k1 k2. (k1 -> k2 -> Type) -> k1 -> k2 -> Type
 newtype Wrap p a b = Wrap (p a b)
 
 derive instance newtypeWrap :: Newtype (Wrap p a b) _

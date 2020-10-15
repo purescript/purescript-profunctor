@@ -7,6 +7,7 @@ import Data.Newtype (class Newtype)
 import Data.Functor.Contravariant (class Contravariant, cmap)
 
 -- | Makes a trivial `Profunctor` for a `Contravariant` functor.
+newtype Clown :: forall k1 k2. (k1 -> Type) -> k1 -> k2 -> Type
 newtype Clown f a b = Clown (f a)
 
 derive instance newtypeClown :: Newtype (Clown f a b) _

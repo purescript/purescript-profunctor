@@ -21,6 +21,7 @@ import Data.Tuple (Tuple(..))
 -- | `Star` turns a `Functor` into a `Profunctor`.
 -- |
 -- | `Star f` is also the Kleisli category for `f`
+newtype Star :: forall k. (k -> Type) -> Type -> k -> Type
 newtype Star f a b = Star (a -> f b)
 
 derive instance newtypeStar :: Newtype (Star f a b) _
