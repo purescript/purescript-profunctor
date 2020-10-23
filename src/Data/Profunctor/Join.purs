@@ -8,6 +8,7 @@ import Data.Profunctor (class Profunctor, dimap)
 
 -- | Turns a `Profunctor` into a `Invariant` functor by equating the two type
 -- | arguments.
+newtype Join :: forall k. (k -> k -> Type) -> k -> Type
 newtype Join p a = Join (p a a)
 
 derive instance newtypeJoin :: Newtype (Join p a) _

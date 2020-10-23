@@ -21,14 +21,14 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-contravariant": "^4.0.0",
-    "purescript-control": "^4.0.0",
-    "purescript-distributive": "^4.0.0",
-    "purescript-either": "^4.0.0",
-    "purescript-exists": "^4.0.0",
-    "purescript-invariant": "^4.0.0",
-    "purescript-newtype": "^3.0.0",
-    "purescript-prelude": "^4.0.0",
-    "purescript-tuples": "^5.0.0"
+    "purescript-contravariant": "master",
+    "purescript-control": "master",
+    "purescript-distributive": "master",
+    "purescript-either": "master",
+    "purescript-exists": "master",
+    "purescript-invariant": "master",
+    "purescript-newtype": "master",
+    "purescript-prelude": "master",
+    "purescript-tuples": "master"
   }
 }

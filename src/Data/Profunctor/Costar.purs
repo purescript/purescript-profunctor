@@ -19,6 +19,7 @@ import Data.Tuple (Tuple(..), fst, snd)
 -- | `Costar` turns a `Functor` into a `Profunctor` "backwards".
 -- |
 -- | `Costar f` is also the co-Kleisli category for `f`.
+newtype Costar :: forall k. (k -> Type) -> k -> Type -> Type
 newtype Costar f b a = Costar (f b -> a)
 
 derive instance newtypeCostar :: Newtype (Costar f a b) _
