@@ -1,14 +1,15 @@
 # purescript-profunctor
 
 [![Latest release](http://img.shields.io/github/release/purescript/purescript-profunctor.svg)](https://github.com/purescript/purescript-profunctor/releases)
-[![Build Status](https://travis-ci.org/purescript/purescript-profunctor.svg?branch=master)](https://travis-ci.org/purescript/purescript-profunctor)
+[![Build status](https://github.com/purescript/purescript-profunctor/workflows/CI/badge.svg?branch=master)](https://github.com/purescript/purescript-profunctor/actions?query=workflow%3ACI+branch%3Amaster)
+[![Pursuit](https://pursuit.purescript.org/packages/purescript-profunctor/badge)](https://pursuit.purescript.org/packages/purescript-profunctor)
 
 Profunctor typeclass.
 
 ## Installation
 
 ```
-bower install purescript-profunctor
+spago install profunctor
 ```
 
 ## Documentation
