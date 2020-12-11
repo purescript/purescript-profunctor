@@ -6,7 +6,6 @@ import Control.Comonad (class Comonad, extract)
 import Control.Extend (class Extend, (=<=))
 
 import Data.Distributive (class Distributive, distribute)
-import Data.Either (Either(..), either)
 import Data.Functor.Invariant (class Invariant, imapF)
 import Data.Newtype (class Newtype)
 import Data.Profunctor (class Profunctor, lcmap)
