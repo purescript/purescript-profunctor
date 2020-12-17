@@ -6,13 +6,10 @@ import Control.Comonad (class Comonad, extract)
 import Control.Extend (class Extend, (=<=))
 
 import Data.Distributive (class Distributive, distribute)
-import Data.Either (Either(..), either)
 import Data.Functor.Invariant (class Invariant, imapF)
 import Data.Newtype (class Newtype)
 import Data.Profunctor (class Profunctor, lcmap)
 import Data.Profunctor.Closed (class Closed)
-import Data.Profunctor.Cochoice (class Cochoice)
-import Data.Profunctor.Costrong (class Costrong)
 import Data.Profunctor.Strong (class Strong)
 import Data.Tuple (Tuple(..), fst, snd)
 
@@ -57,20 +54,6 @@ instance profunctorCostar :: Functor f => Profunctor (Costar f) where
 instance strongCostar :: Comonad f => Strong (Costar f) where
   first (Costar f) = Costar \x -> Tuple (f (map fst x)) (snd (extract x))
   second (Costar f) = Costar \x -> Tuple (fst (extract x)) (f (map snd x))
-
-instance costrongCostar :: Functor f => Costrong (Costar f) where
-  unfirst (Costar f) = Costar \fb ->
-    let bd = f ((\a -> Tuple a (snd bd)) <$> fb) in fst bd
-  unsecond (Costar f) = Costar \fb ->
-    let db = f ((\a -> Tuple (fst db) a) <$> fb) in snd db
-
-instance cochoiceCostar :: Applicative f => Cochoice (Costar f) where
-  unleft (Costar f) =
-    let g = either identity (\r -> g (pure (Right r))) <<< f
-    in Costar (g <<< map Left)
-  unright (Costar f) =
-    let g = either (\l -> g (pure (Left l))) identity <<< f
-    in Costar (g <<< map Right)
 
 instance closedCostar :: Functor f => Closed (Costar f) where
   closed (Costar f) = Costar \g x -> f (map (_ $ x) g)
