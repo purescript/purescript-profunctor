@@ -6,7 +6,7 @@ Notable changes to this project are documented in this file. The format is based
 
 Breaking changes:
 - Added support for PureScript 0.14 and dropped support for all previous versions (#35)
-- Removesd `Costrong` and `Cochoice` from `Costar` (#38)
+- Removed `Costrong` and `Cochoice` from `Costar` (#38)
 
 New features:
 
