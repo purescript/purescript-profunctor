@@ -5,12 +5,16 @@ Notable changes to this project are documented in this file. The format is based
 ## [Unreleased]
 
 Breaking changes:
+- Added support for PureScript 0.14 and dropped support for all previous versions (#35)
+- Removed `Costrong` and `Cochoice` from `Costar` (#38)
 
 New features:
 
 Bugfixes:
 
 Other improvements:
+- Migrated CI to GitHub Actions and updated installation instructions to use Spago (#36)
+- Added a changelog and pull request template (#39, #40)
 
 ## [v4.1.0](https://github.com/purescript/purescript-profunctor/releases/tag/v4.1.0) - 2019-08-21
 
@@ -40,17 +44,9 @@ Added more instances for `Joker` (@masaeedu)
 
 ## [v1.0.0](https://github.com/purescript/purescript-profunctor/releases/tag/v1.0.0) - 2016-06-01
 
-This release is intended for the PureScript 0.9.1 compiler and newer.
-
-**Note**: The v1.0.0 tag is not meant to indicate the library is “finished”, the core libraries are all being bumped to this for the 0.9 compiler release so as to use semver more correctly.
-
-## [v1.0.0-rc.2](https://github.com/purescript/purescript-profunctor/releases/tag/v1.0.0-rc.2) - 2016-05-20
+This release is intended for the PureScript 0.9.1 compiler and newer. **Note**: The v1.0.0 tag is not meant to indicate the library is “finished”, the core libraries are all being bumped to this for the 0.9 compiler release so as to use semver more correctly.
 
 - Fixed unused import warnings
-
-## [v1.0.0-rc.1](https://github.com/purescript/purescript-profunctor/releases/tag/v1.0.0-rc.1) - 2016-03-25
-
-- Release candidate for the psc 0.8+ core libraries
 
 ## [v0.3.2](https://github.com/purescript/purescript-profunctor/releases/tag/v0.3.2) - 2016-01-03
 
@@ -63,10 +59,6 @@ Add `Star`.
 ## [v0.3.0](https://github.com/purescript/purescript-profunctor/releases/tag/v0.3.0) - 2015-06-30
 
 This release works with versions 0.7.\* of the PureScript compiler. It will not work with older versions. If you are using an older version, you should require an older, compatible version of this library.
-
-## [v0.3.0-rc.1](https://github.com/purescript/purescript-profunctor/releases/tag/v0.3.0-rc.1) - 2015-06-06
-
-Initial release candidate of the library intended for the 0.7 compiler.
 
 ## [v0.2.1](https://github.com/purescript/purescript-profunctor/releases/tag/v0.2.1) - 2015-03-19
 
@@ -83,5 +75,6 @@ Update docs
 
 ## [v0.0.2](https://github.com/purescript/purescript-profunctor/releases/tag/v0.0.2) - 2015-01-08
 
+- Initial release.
 - Added `Choice` and `Strong` (@joneshf)
 
