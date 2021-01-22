@@ -15,6 +15,7 @@ import Data.Newtype (class Newtype)
 import Data.Profunctor (class Profunctor)
 import Data.Profunctor.Choice (class Choice)
 import Data.Profunctor.Closed (class Closed)
+import Data.Profunctor.Cochoice (class Cochoice)
 import Data.Profunctor.Strong (class Strong)
 import Data.Tuple (Tuple(..))
 
@@ -75,6 +76,10 @@ instance strongStar :: Functor f => Strong (Star f) where
 instance choiceStar :: Applicative f => Choice (Star f) where
   left  (Star f) = Star $ either (map Left <<< f) (pure <<< Right)
   right (Star f) = Star $ either (pure <<< Left) (map Right <<< f)
+
+instance cochoiceStar :: MonadZero f => Cochoice (Star f) where
+  unleft  (Star f) = Star $ \a -> (=<<) (either pure (const empty)) $ f (Left a)
+  unright (Star f) = Star $ \a -> (=<<) (either (const empty) pure) $ f (Right a)
 
 instance closedStar :: Distributive f => Closed (Star f) where
   closed (Star f) = Star \g -> distribute (f <<< g)

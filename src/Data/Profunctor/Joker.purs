@@ -2,10 +2,13 @@ module Data.Profunctor.Joker where
 
 import Prelude
 
-import Data.Either (Either(..))
+import Control.Alternative (empty)
+import Control.MonadPlus (class MonadZero)
+import Data.Either (Either(..), either)
 import Data.Newtype (class Newtype, un)
 import Data.Profunctor (class Profunctor)
 import Data.Profunctor.Choice (class Choice)
+import Data.Profunctor.Cochoice (class Cochoice)
 
 -- | Makes a trivial `Profunctor` for a covariant `Functor`.
 newtype Joker :: forall k1 k2. (k1 -> Type) -> k2 -> k1 -> Type
@@ -38,6 +41,11 @@ instance bindJoker :: Bind f => Bind (Joker f a) where
   bind (Joker ma) amb = Joker $ ma >>= (amb >>> un Joker)
 
 instance monadJoker :: Monad m => Monad (Joker m a)
+
+instance cochoiceJoker :: MonadZero f => Cochoice (Joker f)
+  where
+  unleft  (Joker fa) = Joker $ fa >>= either pure (const empty)
+  unright (Joker fb) = Joker $ fb >>= either (const empty) pure
 
 hoistJoker :: forall f g a b. (f ~> g) -> Joker f a b -> Joker g a b
 hoistJoker f (Joker a) = Joker (f a)
