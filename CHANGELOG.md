@@ -7,8 +7,11 @@ Notable changes to this project are documented in this file. The format is based
 Breaking changes:
 - Added support for PureScript 0.14 and dropped support for all previous versions (#35)
 - Removed `Costrong` and `Cochoice` from `Costar` (#38)
+- `Clown`, `Costar`, `Cowrap`, and `Joker` have been moved to the `Data.Functors` module in the `purescript-functors` package, so that the same types can also be used as bifunctors; `Cowrap` was renamed to `Flip` (#41)
+- `Wrap` was deleted; it is expected that any instances of `Profunctor` will be accompanied by a corresponding instance of `Functor` (#41)
 
 New features:
+- This package no longer depends on the `purescript-contravariant` package (#41)
 
 Bugfixes:
 

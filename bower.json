@@ -21,7 +21,6 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-contravariant": "master",
     "purescript-control": "master",
     "purescript-distributive": "master",
     "purescript-either": "master",
