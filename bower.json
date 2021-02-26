@@ -9,7 +9,7 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "git://github.com/purescript/purescript-profunctor.git"
+    "url": "https://github.com/purescript/purescript-profunctor.git"
   },
   "ignore": [
     "**/.*",
@@ -21,13 +21,13 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-control": "master",
-    "purescript-distributive": "master",
-    "purescript-either": "master",
-    "purescript-exists": "master",
-    "purescript-invariant": "master",
-    "purescript-newtype": "master",
-    "purescript-prelude": "master",
-    "purescript-tuples": "master"
+    "purescript-control": "^5.0.0",
+    "purescript-distributive": "^5.0.0",
+    "purescript-either": "^5.0.0",
+    "purescript-exists": "^5.0.0",
+    "purescript-invariant": "^5.0.0",
+    "purescript-newtype": "^4.0.0",
+    "purescript-prelude": "^5.0.0",
+    "purescript-tuples": "^6.0.0"
   }
 }

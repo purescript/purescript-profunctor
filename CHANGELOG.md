@@ -5,6 +5,16 @@ Notable changes to this project are documented in this file. The format is based
 ## [Unreleased]
 
 Breaking changes:
+
+New features:
+
+Bugfixes:
+
+Other improvements:
+
+## [v5.0.0](https://github.com/purescript/purescript-profunctor/releases/tag/v5.0.0) - 2021-02-26
+
+Breaking changes:
 - Added support for PureScript 0.14 and dropped support for all previous versions (#35)
 - Removed `Costrong` and `Cochoice` from `Costar` (#38)
 - `Clown`, `Costar`, `Cowrap`, and `Joker` have been moved to the `Data.Functors` module in the `purescript-functors` package, so that the same types can also be used as bifunctors; `Cowrap` was renamed to `Flip` (#41)
