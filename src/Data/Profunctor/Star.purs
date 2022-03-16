@@ -5,7 +5,6 @@ import Prelude
 import Control.Alt (class Alt, (<|>))
 import Control.Alternative (class Alternative)
 import Control.MonadPlus (class MonadPlus)
-import Control.MonadZero (class MonadZero)
 import Control.Plus (class Plus, empty)
 
 import Data.Distributive (class Distributive, distribute, collect)
@@ -57,8 +56,6 @@ instance plusStar :: Plus f => Plus (Star f a) where
 
 instance alternativeStar :: Alternative f => Alternative (Star f a)
 
-instance monadZeroStar :: MonadZero f => MonadZero (Star f a)
-
 instance monadPlusStar :: MonadPlus f => MonadPlus (Star f a)
 
 instance distributiveStar :: Distributive f => Distributive (Star f a) where
@@ -69,11 +66,11 @@ instance profunctorStar :: Functor f => Profunctor (Star f) where
   dimap f g (Star ft) = Star (f >>> ft >>> map g)
 
 instance strongStar :: Functor f => Strong (Star f) where
-  first  (Star f) = Star \(Tuple s x) -> map (_ `Tuple` x) (f s)
+  first (Star f) = Star \(Tuple s x) -> map (_ `Tuple` x) (f s)
   second (Star f) = Star \(Tuple x s) -> map (Tuple x) (f s)
 
 instance choiceStar :: Applicative f => Choice (Star f) where
-  left  (Star f) = Star $ either (map Left <<< f) (pure <<< Right)
+  left (Star f) = Star $ either (map Left <<< f) (pure <<< Right)
   right (Star f) = Star $ either (pure <<< Left) (map Right <<< f)
 
 instance closedStar :: Distributive f => Closed (Star f) where
