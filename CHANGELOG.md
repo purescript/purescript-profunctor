@@ -9,6 +9,7 @@ Breaking changes:
 New features:
 
 Bugfixes:
+- `splitStrong` and `splitChoice` functions as not requiring `identity` have now relaxed constrain of `Semigroupoid` instead of `Catergory`.  
 
 Other improvements:
 
