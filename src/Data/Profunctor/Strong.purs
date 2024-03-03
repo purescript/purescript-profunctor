@@ -2,7 +2,7 @@ module Data.Profunctor.Strong where
 
 import Prelude
 
-import Data.Profunctor (class Profunctor, dimap)
+import Data.Profunctor (class Profunctor, lcmap)
 import Data.Tuple (Tuple(..))
 
 -- | The `Strong` class extends `Profunctor` with combinators for working with
@@ -45,7 +45,7 @@ instance strongFn :: Strong (->) where
 -- | would do for the `bi-functor` instance of `Tuple`.
 splitStrong
   :: forall p a b c d
-   . Category p
+   . Semigroupoid p
   => Strong p
   => p a b
   -> p c d
@@ -70,14 +70,11 @@ infixr 3 splitStrong as ***
 -- | on the same input and return both results in a `Tuple`.
 fanout
   :: forall p a b c
-   . Category p
+   . Semigroupoid p
   => Strong p
   => p a b
   -> p a c
   -> p a (Tuple b c)
-fanout l r = split >>> (l *** r)
-  where
-  split :: p a (Tuple a a)
-  split = dimap identity (\a -> Tuple a a) identity
+fanout l r = lcmap (\a -> Tuple a a) (l *** r)
 
 infixr 3 fanout as &&&
