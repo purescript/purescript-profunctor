@@ -13,6 +13,12 @@ Bugfixes:
 
 Other improvements:
 
+## [v6.0.1](https://github.com/purescript/purescript-profunctor/releases/tag/v6.0.1) - 2024-03-07
+
+Bugfixes:
+- `splitStrong` and `splitChoice` functions constraint relaxed from `Category` to `Semigroupoid` (#48 by @erykciepiela)
+
+
 ## [v6.0.0](https://github.com/purescript/purescript-profunctor/releases/tag/v6.0.0) - 2022-04-27
 
 Breaking changes:
