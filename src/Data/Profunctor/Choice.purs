@@ -3,7 +3,7 @@ module Data.Profunctor.Choice where
 import Prelude
 
 import Data.Either (Either(..), either)
-import Data.Profunctor (class Profunctor, dimap)
+import Data.Profunctor (class Profunctor, rmap)
 
 -- | The `Choice` class extends `Profunctor` with combinators for working with
 -- | sum types.
@@ -46,7 +46,7 @@ instance choiceFn :: Choice (->) where
 -- | `bi-map` would do for the `bi-functor` instance of `Either`.
 splitChoice
   :: forall p a b c d
-   . Category p
+   . Semigroupoid p
   => Choice p
   => p a b
   -> p c d
@@ -73,14 +73,11 @@ infixr 2 splitChoice as +++
 -- | function which will run the approriate computation based on the parameter supplied in the `Either` value.
 fanin
   :: forall p a b c
-   . Category p
+   . Semigroupoid p
   => Choice p
   => p a c
   -> p b c
   -> p (Either a b) c
-fanin l r = (l +++ r) >>> join
-  where
-  join :: p (Either c c) c
-  join = dimap (either identity identity) identity identity
+fanin l r = rmap (either identity identity) (l +++ r)
 
 infixr 2 fanin as |||
