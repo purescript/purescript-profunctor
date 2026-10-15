@@ -12,7 +12,7 @@ Bugfixes:
 
 Other improvements:
 
-- Migrated from Bower/Pulp to Spago and updated CI and formatting tools.
+- Migrated from Bower/Pulp to Spago and updated CI and formatting tools. (#50 by @thomashoneyman)
 
 ## [v6.0.1](https://github.com/purescript/purescript-profunctor/releases/tag/v6.0.1) - 2024-03-07
 
