@@ -17,12 +17,13 @@ Other improvements:
 ## [v6.0.1](https://github.com/purescript/purescript-profunctor/releases/tag/v6.0.1) - 2024-03-07
 
 Bugfixes:
-- `splitStrong` and `splitChoice` functions constraint relaxed from `Category` to `Semigroupoid` (#48 by @erykciepiela)
 
+- `splitStrong` and `splitChoice` functions constraint relaxed from `Category` to `Semigroupoid` (#48 by @erykciepiela)
 
 ## [v6.0.0](https://github.com/purescript/purescript-profunctor/releases/tag/v6.0.0) - 2022-04-27
 
 Breaking changes:
+
 - Update project and deps to PureScript v0.15.0 (#44 by @JordanMartinez)
 - Drop deprecated `MonadZero` instance (#43 by @JordanMartinez)
 
@@ -35,17 +36,20 @@ Other improvements:
 ## [v5.0.0](https://github.com/purescript/purescript-profunctor/releases/tag/v5.0.0) - 2021-02-26
 
 Breaking changes:
+
 - Added support for PureScript 0.14 and dropped support for all previous versions (#35)
 - Removed `Costrong` and `Cochoice` from `Costar` (#38)
 - `Clown`, `Costar`, `Cowrap`, and `Joker` have been moved to the `Data.Functors` module in the `purescript-functors` package, so that the same types can also be used as bifunctors; `Cowrap` was renamed to `Flip` (#41)
 - `Wrap` was deleted; it is expected that any instances of `Profunctor` will be accompanied by a corresponding instance of `Functor` (#41)
 
 New features:
+
 - This package no longer depends on the `purescript-contravariant` package (#41)
 
 Bugfixes:
 
 Other improvements:
+
 - Migrated CI to GitHub Actions and updated installation instructions to use Spago (#36)
 - Added a changelog and pull request template (#39, #40)
 
@@ -104,6 +108,7 @@ Update docs
 ## [v0.1.0](https://github.com/purescript/purescript-profunctor/releases/tag/v0.1.0) - 2015-02-21
 
 **This release requires PureScript v0.6.8 or later**
+
 - Updated dependencies
 
 ## [v0.0.2](https://github.com/purescript/purescript-profunctor/releases/tag/v0.0.2) - 2015-01-08

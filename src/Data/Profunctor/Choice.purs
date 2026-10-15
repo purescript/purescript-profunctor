@@ -30,8 +30,8 @@ class Profunctor p <= Choice p where
   right :: forall a b c. p b c -> p (Either a b) (Either a c)
 
 instance choiceFn :: Choice (->) where
-  left a2b (Left a)  = Left $ a2b a
-  left _   (Right c) = Right c
+  left a2b (Left a) = Left $ a2b a
+  left _ (Right c) = Right c
   right = (<$>)
 
 -- | Compose a value acting on a sum from two values, each acting on one of

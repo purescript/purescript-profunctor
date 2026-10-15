@@ -1,7 +1,8 @@
 module Data.Profunctor where
 
 import Prelude
-import Data.Newtype (class Newtype, wrap, unwrap)
+
+import Data.Newtype (class Newtype, unwrap, wrap)
 
 -- | A `Profunctor` is a `Functor` from the pair category `(Type^op, Type)`
 -- | to `Type`.
