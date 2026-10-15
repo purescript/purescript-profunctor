@@ -12,6 +12,8 @@ Bugfixes:
 
 Other improvements:
 
+- Migrated from Bower/Pulp to Spago and updated CI and formatting tools.
+
 ## [v6.0.1](https://github.com/purescript/purescript-profunctor/releases/tag/v6.0.1) - 2024-03-07
 
 Bugfixes:
@@ -108,4 +110,3 @@ Update docs
 
 - Initial release.
 - Added `Choice` and `Strong` (@joneshf)
-
