@@ -2,7 +2,7 @@
 
 Notable changes to this project are documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Unreleased](https://github.com/purescript/purescript-profunctor/compare/v6.0.2...HEAD)
 
 Breaking changes:
 
@@ -23,6 +23,7 @@ Bugfixes:
 Other improvements:
 
 - Migrated from Bower/Pulp to Spago and updated CI and formatting tools. (#50 by @thomashoneyman)
+- Clarified the function `Choice` instance with a behavior-preserving refactor. (#50 by @thomashoneyman)
 
 ## [v6.0.1](https://github.com/purescript/purescript-profunctor/releases/tag/v6.0.1) - 2024-03-07
 
